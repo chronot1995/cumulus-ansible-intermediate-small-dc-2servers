@@ -1,5 +1,5 @@
 node:
-  switch01:
+  leaf01:
     mlag:
       address:
       backup-ip:
@@ -50,7 +50,7 @@ node:
           vrrp:
             mac:
             ip:
-  switch02:
+  leaf02:
     mlag:
       address:
       backup-ip:
@@ -87,6 +87,104 @@ node:
         neighbors:
       bgp:
         asn: 65222
+        underlay:
+          external:
+            peers:
+              - swp1
+              - swp2
+          internal:
+            peers:
+      svi:
+        interface:
+          ip:
+          vlan:
+          vrrp:
+            mac:
+            ip:
+  spine01:
+    mlag:
+      address:
+      backup-ip:
+      members:
+      peer-ip:
+      sysmac:
+      interfaces:
+        bond01:
+          clagid:
+          members:
+          mode:
+          vlans:
+    overlay:
+      anycast-ip:
+      vxlan:
+        vniint:
+          vlan:
+    ports:
+      - swp1
+      - swp2
+    lacp:
+      interfaces:
+        members:
+    switching:
+      interface:
+        mode:
+        vlans:
+    routing:
+      lo: 10.3.3.3/32
+      ospf:
+        area:
+        neighbors:
+      bgp:
+        asn: 65333
+        underlay:
+          external:
+            peers:
+              - swp1
+              - swp2
+          internal:
+            peers:
+      svi:
+        interface:
+          ip:
+          vlan:
+          vrrp:
+            mac:
+            ip:
+  spine02:
+    mlag:
+      address:
+      backup-ip:
+      members:
+      peer-ip:
+      sysmac:
+      interfaces:
+        bond01:
+          clagid:
+          members:
+          mode:
+          vlans:
+    overlay:
+      anycast-ip:
+      vxlan:
+        vniint:
+          vlan:
+    ports:
+      - swp1
+      - swp2
+    lacp:
+      interfaces:
+        members:
+    switching:
+      interface:
+        mode:
+        vlans:
+    routing:
+      lo: 10.4.4.4/32
+      ospf:
+        area:
+        neighbors:
+      bgp:
+        asn: 65444
         underlay:
           external:
             peers:

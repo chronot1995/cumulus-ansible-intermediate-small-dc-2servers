@@ -4,8 +4,10 @@
 #    using topology data
 
 [switches]
-switch01 ansible_host=192.168.200.1
-switch02 ansible_host=192.168.200.2
+leaf01 ansible_host=192.168.200.1
+leaf02 ansible_host=192.168.200.2
+spine01 ansible_host=192.168.200.3
+spine02 ansible_host=192.168.200.4
 
 [servers]
 server01 ansible_host=192.168.200.11
