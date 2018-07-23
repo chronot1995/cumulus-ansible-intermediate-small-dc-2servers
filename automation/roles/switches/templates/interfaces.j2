@@ -55,7 +55,7 @@ iface {{interface}}
 {% endif %}
 {% endfor %}
 
-{% if node[inventory_hostname]["overlay"]["vxlan"] != "vlanint" %}
+{% if node[inventory_hostname]["overlay"]["vxlan"] != vlanint %}
 {%- for interface in node[inventory_hostname]["overlay"]["vxlan"] -%}
 auto {{interface}}
 iface {{interface}}
