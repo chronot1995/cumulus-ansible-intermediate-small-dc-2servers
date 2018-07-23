@@ -55,7 +55,8 @@ iface {{interface}}
 {% endif %}
 {% endfor %}
 
-{% if node[inventory_hostname]["overlay"]["vxlan"] != "vniint" %}
+{% if node[inventory_hostname]["overlay"]["vxlan"] is defined %}
+{% if node[inventory_hostname]["overlay"]["vxlan"]["vniint"] != defined %}
 {%- for interface in node[inventory_hostname]["overlay"]["vxlan"] -%}
 auto {{interface}}
 iface {{interface}}
@@ -68,6 +69,7 @@ iface {{interface}}
   vxlan-local-tunnelip {{ node[inventory_hostname]["routing"]["lo"]|replace("/32", "") }}
 {% do bridge_ports.append(interface) -%}
 {% endfor %}
+{% endif %}
 {% endif %}
 
 {% if global_vlan_list != [] %}
