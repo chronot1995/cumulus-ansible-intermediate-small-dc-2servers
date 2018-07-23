@@ -56,7 +56,7 @@ iface {{interface}}
 {% endfor %}
 
 {% if node[inventory_hostname]["overlay"]["vxlan"] is defined %}
-{% if node[inventory_hostname]["overlay"]["vxlan"]["vniint"] != defined %}
+{% if node[inventory_hostname]["overlay"]["vxlan"]["vniint"] is not defined %}
 {%- for interface in node[inventory_hostname]["overlay"]["vxlan"] -%}
 auto {{interface}}
 iface {{interface}}
