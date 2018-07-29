@@ -1,2 +1,2 @@
 #!/bin/bash
-ansible-playbook int-ansible-training-vxlan-j2-2servers.yml
+ansible-playbook int-ansible-training-small-dc-2servers.yml
