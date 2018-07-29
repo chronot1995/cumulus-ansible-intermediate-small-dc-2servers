@@ -2,9 +2,9 @@ node:
   leaf01:
     mlag:
       address:
-      backup-ip:
+      backupip:
       members:
-      peer-ip:
+      peerip:
       sysmac:
       interfaces:
         bond01:
@@ -13,7 +13,7 @@ node:
           mode:
           vlans:
     overlay:
-      anycast-ip:
+      anycastip:
       vxlan:
         vni11:
           vlan: "11"
@@ -53,9 +53,9 @@ node:
   leaf02:
     mlag:
       address:
-      backup-ip:
+      backupip:
       members:
-      peer-ip:
+      peerip:
       sysmac:
       interfaces:
         bond01:
@@ -64,7 +64,7 @@ node:
           mode:
           vlans:
     overlay:
-      anycast-ip:
+      anycastip:
       vxlan:
         vni11:
           vlan: "11"
@@ -104,9 +104,9 @@ node:
   spine01:
     mlag:
       address:
-      backup-ip:
+      backupip:
       members:
-      peer-ip:
+      peerip:
       sysmac:
       interfaces:
         bond01:
@@ -115,7 +115,7 @@ node:
           mode:
           vlans:
     overlay:
-      anycast-ip:
+      anycastip:
       vxlan:
         vniint:
           vlan:
@@ -153,9 +153,9 @@ node:
   spine02:
     mlag:
       address:
-      backup-ip:
+      backupip:
       members:
-      peer-ip:
+      peerip:
       sysmac:
       interfaces:
         bond01:
@@ -164,7 +164,7 @@ node:
           mode:
           vlans:
     overlay:
-      anycast-ip:
+      anycastip:
       vxlan:
         vniint:
           vlan:
@@ -184,7 +184,7 @@ node:
         area:
         neighbors:
       bgp:
-        asn: 65444
+        asn: 65333
         underlay:
           external:
             peers:
