@@ -21,7 +21,7 @@ REPONAME="int-ansible-training-small-dc-2servers"
 #Install Automation Tools
 puppet=0
 ansible=1
-ansible_version=2.6.1
+ansible_version=2.6.2
 
 #######################
 
