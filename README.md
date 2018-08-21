@@ -71,18 +71,18 @@ Helpful Linux troubleshooting commands:
 The BGP Summary command will show if each switch has formed an IPv6 and an l2vpn neighbor relationship:
 
 ```
-cumulus@switch01:mgmt-vrf:~$ net show bgp summary
+cumulus@leaf01:mgmt-vrf:~$ net show bgp summary
 
 show bgp ipv4 unicast summary
 =============================
 BGP router identifier 10.1.1.1, local AS number 65111 vrf-id 0
-BGP table version 3
-RIB entries 5, using 760 bytes of memory
+BGP table version 5
+RIB entries 9, using 1368 bytes of memory
 Peers 2, using 39 KiB of memory
 
 Neighbor        V         AS MsgRcvd MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd
-switch02(swp1)  4      65222      41      41        0    0    0 00:01:36            2
-switch02(swp2)  4      65222      41      43        0    0    0 00:01:36            2
+spine01(swp1)   4      65333      47      47        0    0    0 00:01:50            3
+spine02(swp2)   4      65333      47      48        0    0    0 00:01:50            3
 
 Total number of neighbors 2
 
@@ -98,30 +98,28 @@ RIB entries 3, using 456 bytes of memory
 Peers 2, using 39 KiB of memory
 
 Neighbor        V         AS MsgRcvd MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd
-switch02(swp1)  4      65222      41      41        0    0    0 00:01:36            2
-switch02(swp2)  4      65222      41      43        0    0    0 00:01:36            2
+spine01(swp1)   4      65333      47      47        0    0    0 00:01:50            2
+spine02(swp2)   4      65333      47      48        0    0    0 00:01:50            2
 
 Total number of neighbors 2
 
 ```
 
-One should see that the corresponding loopback route is installed with two next hops / ECMP.
+One should see that the loopback routes are installed with two next hops / ECMP for the other leaf:
 
 ```
-cumulus@switch01:mgmt-vrf:~$ net show route
-
-show ip route
-=============
+cumulus@leaf01:mgmt-vrf:~$ net show route bgp
+RIB entry for bgp
+=================
 Codes: K - kernel route, C - connected, S - static, R - RIP,
        O - OSPF, I - IS-IS, B - BGP, P - PIM, E - EIGRP, N - NHRP,
        T - Table, v - VNC, V - VNC-Direct, A - Babel,
        > - selected route, * - FIB route
 
-K>* 0.0.0.0/0 [0/0] via 10.0.2.2, vagrant, 00:02:36
-C>* 10.0.2.0/24 is directly connected, vagrant, 00:02:36
-C>* 10.1.1.1/32 is directly connected, lo, 00:02:36
-B>* 10.2.2.2/32 [20/0] via fe80::4638:39ff:fe00:4, swp1, 00:02:33
-  *                    via fe80::4638:39ff:fe00:8, swp2, 00:02:33
+B>* 10.2.2.2/32 [20/0] via fe80::4638:39ff:fe00:6, swp1, 00:03:51
+  *                    via fe80::4638:39ff:fe00:4, swp2, 00:03:51
+B>* 10.3.3.3/32 [20/0] via fe80::4638:39ff:fe00:6, swp1, 00:03:51
+B>* 10.4.4.4/32 [20/0] via fe80::4638:39ff:fe00:4, swp2, 00:03:51
 ```
 
 One can also view the MAC addresses of the two switches within the EVPN instance by running the following command:
@@ -131,7 +129,7 @@ cumulus@switch01:mgmt-vrf:~$ net show evpn mac vni 11
 
 Number of MACs (local and remote) known for this VNI: 2
 MAC               Type   Intf/Remote VTEP      VLAN
-44:38:39:00:00:05 local  swp10                 11
+44:38:39:00:00:07 local  swp10                 11
 44:38:39:00:00:01 remote 10.2.2.2
 ```
 
