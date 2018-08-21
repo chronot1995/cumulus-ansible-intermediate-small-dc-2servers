@@ -1,4 +1,4 @@
-## int-ansible-training-vxlan-j2-2servers
+## int-ansible-training-small-dc-2servers
 
 ### Summary:
 
@@ -6,7 +6,7 @@ This is an Ansible demo which configures two Linux servers and two Cumulus VX sw
 
 ### Network Diagram:
 
-![Network Diagram](https://github.com/chronot1995/int-ansible-training-vxlan-j2-2servers/blob/master/documentation/int-ansible-training-vxlan-j2-2servers.png)
+![Network Diagram](https://github.com/chronot1995/int-ansible-training-small-dc-2servers/blob/master/documentation/int-ansible-training-small-dc-2servers.png)
 
 ### Initializing the demo environment:
 
@@ -22,11 +22,11 @@ First, make sure that the following is currently running on your machine:
 
 3. Copy the Git repo to your local machine:
 
-    ```git clone https://github.com/chronot1995/int-ansible-training-vxlan-j2-2servers```
+    ```git clone https://github.com/chronot1995/int-ansible-training-small-dc-2servers```
 
 4. Change directories to the following
 
-    ```int-ansible-training-vxlan-j2-2servers```
+    ```int-ansible-training-small-dc-2servers```
 
 6. Run the following:
 
@@ -41,11 +41,11 @@ First, make sure that the following is currently running on your machine:
 
 2. Copy the Git repo unto the oob-mgmt-server:
 
-    ```git clone https://github.com/chronot1995/int-ansible-training-vxlan-j2-2servers```
+    ```git clone https://github.com/chronot1995/int-ansible-training-small-dc-2servers```
 
 3. Change directories to the following
 
-    ```int-ansible-training-vxlan-j2-2servers/automation```
+    ```int-ansible-training-small-dc-2servers/automation```
 
 4. Run the following:
 
@@ -147,7 +147,7 @@ MAC               Type   Intf/Remote VTEP      VLAN
 
 3. The following command was used to run the Topology Converter within the vx-simulation directory:
 
-    ```python2 topology_converter.py int-ansible-training-vxlan-j2-2servers.dot -c```
+    ```python2 topology_converter.py int-ansible-training-small-dc-2servers.dot -c```
 
     After the above command is executed, the following configuration changes are necessary:
 
