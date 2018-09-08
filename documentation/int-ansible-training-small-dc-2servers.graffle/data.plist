@@ -1853,7 +1853,7 @@ ASN: 65333}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{633.93779537355715, 484.55998916924}, {243, 24}}</string>
+					<string>{{630.93779537355715, 484.55998916924}, {249, 24}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -1903,7 +1903,7 @@ ASN: 65333}</string>
 {\*\expandedcolortbl;;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
-\f0\b\fs40 \cf0 server02 -192.168.11.222}</string>
+\f0\b\fs40 \cf0 server02 - 192.168.11.222}</string>
 						<key>VerticalPad</key>
 						<real>0.0</real>
 					</dict>
@@ -1912,7 +1912,7 @@ ASN: 65333}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{54.100082022747984, 484.55998916924}, {241, 24}}</string>
+					<string>{{51.600082022747984, 484.55998916924}, {246, 24}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -1962,7 +1962,7 @@ ASN: 65333}</string>
 {\*\expandedcolortbl;;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
-\f0\b\fs40 \cf0 server01 -192.168.11.111}</string>
+\f0\b\fs40 \cf0 server01 - 192.168.11.111}</string>
 						<key>VerticalPad</key>
 						<real>0.0</real>
 					</dict>
@@ -3184,7 +3184,7 @@ ASN: 65222}</string>
 		<key>Sidebar_Tab</key>
 		<integer>0</integer>
 		<key>VisibleRegion</key>
-		<string>{{-104.85227494974481, -98.564394914459839}, {1238.636345179244, 869.31816886433137}}</string>
+		<string>{{-104.8068187956448, -98.653408932161184}, {1238.6363451792438, 869.3181688643316}}</string>
 		<key>ZoomValues</key>
 		<array>
 			<array>
