@@ -173,25 +173,62 @@ cumulus@leaf01:mgmt-vrf:~$ net show route bgp
 RIB entry for bgp
 =================
 Codes: K - kernel route, C - connected, S - static, R - RIP,
-       O - OSPF, I - IS-IS, B - BGP, P - PIM, E - EIGRP, N - NHRP,
-       T - Table, v - VNC, V - VNC-Direct, A - Babel,
+       O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+       T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+       F - PBR,
        > - selected route, * - FIB route
 
-B>* 10.2.2.2/32 [20/0] via fe80::4638:39ff:fe00:6, swp1, 00:03:51
-  *                    via fe80::4638:39ff:fe00:4, swp2, 00:03:51
-B>* 10.3.3.3/32 [20/0] via fe80::4638:39ff:fe00:6, swp1, 00:03:51
-B>* 10.4.4.4/32 [20/0] via fe80::4638:39ff:fe00:4, swp2, 00:03:51
+B>* 10.2.2.2/32 [20/0] via fe80::4638:39ff:fe00:2, swp1, 00:05:59
+  *                    via fe80::4638:39ff:fe00:4, swp2, 00:05:59
+B>* 10.3.3.3/32 [20/0] via fe80::4638:39ff:fe00:2, swp1, 00:06:00
+B>* 10.4.4.4/32 [20/0] via fe80::4638:39ff:fe00:4, swp2, 00:05:59
 ```
 
 One can also view the MAC addresses of the two switches within the EVPN instance by running the following command:
 
 ```
-cumulus@switch01:mgmt-vrf:~$ net show evpn mac vni 11
-
+cumulus@leaf01:mgmt-vrf:~$ net show evpn mac vni 11
 Number of MACs (local and remote) known for this VNI: 2
-MAC               Type   Intf/Remote VTEP      VLAN
-44:38:39:00:00:07 local  swp10                 11
-44:38:39:00:00:01 remote 10.2.2.2
+MAC               Type   Intf/Remote VTEP      VLAN  Seq #'s
+44:38:39:00:00:0b remote 10.2.2.2                    0/0
+44:38:39:00:00:09 local  swp10                 11    0/0
+```
+
+This will show all of the Type-2 and Type-3 routes, and the encapsulated MAC addresses, from leaf01 and leaf02:
+
+```
+cumulus@leaf01:mgmt-vrf:~$ net show bgp evpn route
+BGP table version is 2, local router ID is 10.1.1.1
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal
+Origin codes: i - IGP, e - EGP, ? - incomplete
+EVPN type-2 prefix: [2]:[ESI]:[EthTag]:[MAClen]:[MAC]:[IPlen]:[IP]
+EVPN type-3 prefix: [3]:[EthTag]:[IPlen]:[OrigIP]
+EVPN type-5 prefix: [5]:[ESI]:[EthTag]:[IPlen]:[IP]
+
+   Network          Next Hop            Metric LocPrf Weight Path
+                    Extended Community
+Route Distinguisher: 10.1.1.1:2
+*> [2]:[0]:[0]:[48]:[44:38:39:00:00:09]
+                    10.1.1.1                           32768 i
+                    ET:8 RT:65111:11
+*> [3]:[0]:[32]:[10.1.1.1]
+                    10.1.1.1                           32768 i
+                    ET:8 RT:65111:11
+Route Distinguisher: 10.2.2.2:2
+*  [2]:[0]:[0]:[48]:[44:38:39:00:00:0b]
+                    10.2.2.2                               0 65333 65222 i
+                    RT:65222:11 ET:8
+*> [2]:[0]:[0]:[48]:[44:38:39:00:00:0b]
+                    10.2.2.2                               0 65333 65222 i
+                    RT:65222:11 ET:8
+*  [3]:[0]:[32]:[10.2.2.2]
+                    10.2.2.2                               0 65333 65222 i
+                    RT:65222:11 ET:8
+*> [3]:[0]:[32]:[10.2.2.2]
+                    10.2.2.2                               0 65333 65222 i
+                    RT:65222:11 ET:8
+
+Displayed 4 prefixes (6 paths)
 ```
 
 ### Errata
