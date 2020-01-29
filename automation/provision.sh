@@ -1,2 +1,2 @@
 #!/bin/bash
-ansible-playbook cumulus-ansible-intermediate-small-dc-2servers
+ansible-playbook cumulus-ansible-intermediate-small-dc-2servers.yml
