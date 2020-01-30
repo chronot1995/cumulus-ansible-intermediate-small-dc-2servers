@@ -16,10 +16,6 @@ This is an Ansible demo which configures two Linux servers and four Cumulus VX s
 
 ![Network Diagram](https://github.com/chronot1995/cumulus-ansible-intermediate-small-dc-2servers/blob/master/documentation/cumulus-ansible-intermediate-small-dc-2servers.png)
 
-### Network Diagram:
-
-![Network Diagram](https://github.com/chronot1995/cumulus-ansible-intermediate-small-dc-2servers/blob/master/documentation/cumulus-ansible-intermediate-small-dc-2servers.png)
-
 ### Install and Setup Virtualbox on Mac
 
 Setup Vagrant for the first time on Mojave, MacOS 10.14.6
